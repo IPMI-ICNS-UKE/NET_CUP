@@ -123,7 +123,8 @@ def confusion_matrix(y_true: np.ndarray, y_pred: np.ndarray, labels: List[str]):
     cfm_abs = sklearn.metrics.confusion_matrix(y_true, y_pred)
     cfm_rel = sklearn.metrics.confusion_matrix(
         y_true, y_pred, normalize='true')
+    cfm_rel = np.round(cfm_rel, 4)
     cfm = np.array([f'{absolute_value} \n \n ({relative_value})' for absolute_value, relative_value in
                     zip(cfm_abs.ravel(), cfm_rel.ravel())]).reshape(cfm_abs.shape)
     return sns.heatmap(cfm_rel, xticklabels=labels, yticklabels=labels, fmt='', annot=cfm, annot_kws={}).set(
-        xlabel='Predicted class', ylabel='True class')
+        xlabel='Predicted origin', ylabel='True origin')

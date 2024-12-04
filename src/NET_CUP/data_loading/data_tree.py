@@ -56,17 +56,13 @@ class Patient(NodeMixin):
     A class representing a patient node in the data tree structure.
     """
 
-    def __init__(self, name: str, origin: Origin, birthdate: str, sex: str, cup: str, init_diagn: str, external: str, parent: DataTree,
+    def __init__(self, name: str, origin: Origin, external: str, parent: DataTree,
                  children: ENumber = None):
         super(Patient, self).__init__()
         self.name = name
         self.parent = parent
 
         self.origin = origin
-        self.birthdate = datetime.strptime(birthdate, '%Y-%m-%d')
-        self.sex = sex
-        self.cup = bool(cup)
-        self.init_diagn = datetime.strptime(init_diagn, '%Y-%m-%d')
         self.external = bool(external)
         if children:
             self.children = children
@@ -85,10 +81,9 @@ class ENumber(NodeMixin):
     unique E-number under which multiple slides can be produced.
     """
 
-    def __init__(self, name: str, date: str, biopsy: str, parent: Patient, children: Slide = None):
+    def __init__(self, name: str, biopsy: str, parent: Patient, children: Slide = None):
         super(ENumber, self).__init__()
         self.name = convert_e_number_format(name, seperations=False)
-        self.date = datetime.strptime(date,  '%Y-%m-%d')
         self.biopsy = bool(biopsy)
         self.parent = parent
         if children:
@@ -166,8 +161,7 @@ def create_tree(patients_path: str, enumbers_path: str) -> DataTree:
     patient_nodes = []
     for _, row in df_patients.iterrows():
         patient_nodes.append(
-            Patient(str(row['ID']), Origin.get_origin(row['ORIGIN']), row['BIRTHDATE'], row['SEX'], row['CUP'],
-                    row['INITDIAGN'], row['EXTERNAL'], parent=data))
+            Patient(str(row['ID']), Origin.get_origin(row['ORIGIN']), row['EXTERNAL'], parent=data))
 
     # Append E-number nodes and associated slide nodes to tree
     df_enumbers = pandas.read_csv(enumbers_path)
@@ -175,8 +169,7 @@ def create_tree(patients_path: str, enumbers_path: str) -> DataTree:
 
     for patient in patient_nodes:
         for _, row in df_enumbers[df_enumbers['ID'] == repr(patient)].iterrows():
-            enumber = ENumber(row['ENUMBER'], row['DATE'],
-                              row['BIOPSY'], parent=patient)
+            enumber = ENumber(row['ENUMBER'], row['BIOPSY'], parent=patient)
             for slide in row['HE'].split(', '):
                 if slide != "x":
                     Slide(slide, Stain['HE'], parent=enumber)

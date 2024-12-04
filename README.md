@@ -14,7 +14,7 @@ This repository contains the code for the publication titled "Metastatic neuroen
    pip install -r requirements.txt
    ```
 3. Download data:
-   - Download the required CSV files and feature vectors from LINK and place them in the [data/](data/) folder.
+   - Download the required CSV files and feature vector from [Zenodo](https://zenodo.org/records/14253785) and extract them into the [data/](data/) directory.
 
 ### Additional Steps for Generating New Feature Vectors
 
@@ -25,7 +25,6 @@ To respect data privacy, only feature vectors generated from random patches of w
    - Download the RetCCL ResNet weights from [RetCCL repository](https://github.com/Xiyue-Wang/RetCCL?tab=readme-ov-file) under the "Pre-trained models for histopathological image tasks" section.
    - Rename the downloaded files to mtdp.pth and retccl.pth and place them into [weights/](weights/).
 2. Copy WSIs along with their .geojson segmentation files into [data/external_dataset/](data/external_dataset/) and [data/uke_dataset/](data/uke_dataset/).
-3. Install OpenSlide: https://openslide.org/download/.
 
 ## Usage
 

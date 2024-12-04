@@ -10,6 +10,7 @@ manual retrieval and visual inspection of individual patches if needed.
 import os
 import copy
 from typing import Tuple, Dict, List
+import random
 # Other dependencies
 import numpy as np
 # Local dependencies
@@ -54,6 +55,8 @@ def get_Xyp(patient: data_tree.Patient,
                 # List all feature files for this slide and feature type
                 features_complete = os.listdir(os.path.join(
                     feature_dir, repr(slide) + '_' + repr(feature_type)))
+                
+                random.shuffle(features_complete)
 
                 # Filter feature files based on the desired patch size and border_patches setting
                 features_preselected = []
