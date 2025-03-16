@@ -1,6 +1,6 @@
 ## About The Project
 
-This repository contains the code for the publication titled "Metastatic neuroendocrine tumors with unknown site of the primary: a machine-learning based approach to a complex scenario".
+This repository contains the code for the publication titled "A new, machine learning-based approach to metastatic neuroendocrine tumors of unknown origin".
 
 ## Installation
 
@@ -37,6 +37,10 @@ Within each notebook, you can select different pretrained ResNet backbones and c
 - FeatureType.RETCCL
 - FeatureType.MTDP
 
+### Using trained models
+
+Different models with different pretrained ResNets used for feature extraction and trained on the entire UKE dataset can be found in the [models/](models/) directory. When using these, make sure to use patches of the same size of xxx x xxx um for optimal results. 
+
 ### Generating new feature vectors
 
 After acquiring access to the original WSIs and following the [Installation](#installation) steps, you can generate new feature vectors:
@@ -49,7 +53,7 @@ python src/NET_CUP/feature_extraction/extract_features.py
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the CC BY-NC-SA 4.0 License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 

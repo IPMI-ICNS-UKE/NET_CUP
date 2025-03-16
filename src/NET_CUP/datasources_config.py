@@ -2,7 +2,7 @@ from pathlib import Path
 
 config_file_path = Path(__file__).parent.parent.parent
 
-PATIENTS_PATH = config_file_path/ 'data' / 'net_patients.csv'
+PATIENTS_PATH = config_file_path / 'data' / 'net_patients.csv'
 ENUMBER_PATH = config_file_path / 'data' / 'net_enumbers.csv'
 
 UKE_DATASET_DIR = config_file_path / 'data' / 'uke_dataset'
