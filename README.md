@@ -39,7 +39,14 @@ Within each notebook, you can select different pretrained ResNet backbones and c
 
 ### Using trained models
 
-Different models with different pretrained ResNets used for feature extraction and trained on the entire UKE dataset can be found in the [models/](models/) directory. When using these, make sure to use patches of the same size of xxx x xxx um for optimal results. 
+Different models for binary classification between pancreas and small intestine patches are available in the [models/](models/) directory. An ONNX file was created for each combination of pretrained ResNet feature extractor (ImageNet, MTDP, and RetCCL) and classifier (SVC with RBF kernel, SVC with linear kernel, and Logistic Regression). Each ONNX file contains a scikit-learn pipeline that includes a fitted PCA for dimensionality reduction and a trained classifier. To make predictions, load the ONNX file using onnxruntime and run inference with a feature vector:
+
+```python 
+   import onnxruntime as rt
+   sess = rt.InferenceSession(<PATH TO ONNX FILE>, providers=["CPUExecutionProvider"])
+   pred = sess.run(None, {"X": <ARRAY WITH FEATURE VECTORS>})[0]
+```
+
 
 ### Generating new feature vectors
 
