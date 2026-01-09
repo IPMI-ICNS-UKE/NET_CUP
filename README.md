@@ -1,6 +1,6 @@
 ## About The Project
 
-This repository contains the code for the publication titled "A new, machine learning-based approach to metastatic neuroendocrine tumors of unknown origin".
+This repository contains the code for the publication titled "A new, machine learning-based approach to metastatic neuroendocrine tumors of unknown origin", accepted by the [Journal of Neuroendocrinology](https://onlinelibrary.wiley.com/journal/13652826). 
 
 ## Installation
 
@@ -66,6 +66,6 @@ Distributed under the CC BY-NC-SA 4.0 License. See `LICENSE.txt` for more inform
 
 ## Contact
 
-Rüdiger Schmitz - r.schmitz@uke.de
+Rüdiger Schmitz - r.schmitz@uke.de. For further details, cf. [company](https://casuu.com/about-us) and [UKE IPMI team]([pages](https://www.uke.de/kliniken-institute/institute/institut-fuer-angewandte-medizininformatik/team/index.html#show:IPMI) pages. 
 
 Project Link: [https://github.com/IPMI-ICNS-UKE/NET_CUP](https://github.com/IPMI-ICNS-UKE/NET_CUP)
